@@ -2,6 +2,7 @@
 
 set -o vi
 shopt -s globstar
+HISTSIZE=10000
 HISTFILESIZE=1000000
 
 # Docker
@@ -9,8 +10,12 @@ alias dcln='docker rmi $(docker images -qf dangling=true)'
 alias drmc='docker rm $(docker ps -a -q) && dcln'
 alias dc='docker-compose'
 
-# Python
+# Python virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/p
 . $HOME/.local/bin/virtualenvwrapper.sh
+
+# Python pyenv
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 eval "$(pyenv init -)"
