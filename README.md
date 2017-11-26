@@ -2,6 +2,14 @@
 
 Clone into `~/.dotfiles`.
 
+## Prerequisites
+
+* The bash config expects [liquidprompt](https://github.com/nojhan/liquidprompt) to be
+  installed.
+* The tmux config expects `xclip` to be installed.
+* Install the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+  plugin for vim and neovim.
+
 ## Bash
 
 Add the following lines to `~/.bashrc`:
@@ -21,7 +29,6 @@ the following:
 * [Python](https://www.python.org/)
   * [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
   * [pyenv](https://github.com/pyenv/pyenv)
-* [liquidprompt](https://github.com/nojhan/liquidprompt)
 
 ## Other
 
