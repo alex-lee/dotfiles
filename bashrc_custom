@@ -29,7 +29,8 @@ alias godir='cd $HOME/g/src/github.com/team-telnyx'
 export PATH=$PATH:$HOME/e/elixir/bin
 
 # Node
-export PATH=$PATH:$HOME/extern/node-v6.10.2-linux-x64/bin
+# (Need to create the symlink to this path.)
+export PATH=$PATH:$HOME/extern/node-linux-x64/bin:$HOME/npm-global/bin
 
 # liquidprompt
 [[ $- = *i* ]] && . ~/extern/liquidprompt/liquidprompt
