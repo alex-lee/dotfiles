@@ -30,10 +30,11 @@ the following:
   * [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
   * [pyenv](https://github.com/pyenv/pyenv)
 
-## Other
+## Tmux
 
-Create symlinks for the various config files.
+Create symlink for the config file and install the plugin manager.
 
 ```sh
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
