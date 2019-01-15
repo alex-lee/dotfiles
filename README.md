@@ -9,7 +9,7 @@ Clone into `~/.dotfiles`.
 * The tmux config expects `xclip` to be installed.
 * Install the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
   plugin for vim and neovim.
-* To install virtualenvwrapper: `pip install --user virtualenvwrapper`
+* To install virtualenvwrapper: `pip3 install --user virtualenvwrapper`
 
 ## Bash
 
