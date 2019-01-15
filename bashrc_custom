@@ -1,4 +1,12 @@
+#!/bin/bash
 # vim: ft=sh
+
+# Use this to avoid duplicate entries.
+path_append() {
+	if [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
+		export PATH=$PATH:$1
+	fi
+}
 
 set -o vi
 shopt -s globstar
@@ -13,28 +21,30 @@ alias dc='docker-compose'
 # Python virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/p
-. $HOME/.local/bin/virtualenvwrapper.sh
+. "$HOME"/.local/bin/virtualenvwrapper.sh
 
 # Python pyenv
 export PYENV_ROOT=$HOME/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
+path_append "$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 
 # Go
 export GO111MODULE=on
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+path_append "/usr/local/go/bin"
+path_append "$GOPATH/bin"
 alias godir='cd $HOME/go/src/github.com/team-telnyx'
 
 # Rust
-export PATH=$PATH:$HOME/.cargo/bin
+path_append "$HOME/.cargo/bin"
 
 # Elixir
-export PATH=$PATH:$HOME/e/elixir/bin
+path_append "$HOME/e/elixir/bin"
 
-# Node
+# Node and Yarn
 # (Need to create the symlink to this path.)
-export PATH=$PATH:$HOME/extern/node-linux-x64/bin
+path_append "$HOME/.yarn/bin"
+path_append "$HOME/extern/node-linux-x64/bin"
 
 # liquidprompt
 [[ $- = *i* ]] && . ~/extern/liquidprompt/liquidprompt
