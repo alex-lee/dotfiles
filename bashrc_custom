@@ -45,7 +45,8 @@ path_append "$HOME/e/elixir/bin"
 # Node and Yarn
 # (Need to create the symlink to this path.)
 path_append "$HOME/.yarn/bin"
-path_append "$HOME/extern/node-linux-x64/bin"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # liquidprompt
 [[ $- = *i* ]] && . ~/extern/liquidprompt/liquidprompt
