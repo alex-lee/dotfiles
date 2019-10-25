@@ -28,6 +28,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export PYENV_ROOT=$HOME/.pyenv
 path_append "$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Go
 export GO111MODULE=on

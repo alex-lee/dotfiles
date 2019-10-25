@@ -39,3 +39,23 @@ Create symlink for the config file and install the plugin manager.
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
+## Python
+
+Install [pyenv][pyenv] and [pyenv-virtualenv][pyenv-virtualenv].
+
+[pyenv]: https://github.com/pyenv/pyenv
+[pyenv-virtualenv]: https://github.com/pyenv/pyenv-virtualenv
+
+Example usage:
+
+```bash
+~$ pyenv install 3.7.5
+~$ mkdir ~/myproject
+~$ cd ~/myproject
+~/myproject$ pyenv virtualenv 3.7.5 myproject
+~/myproject$ pyenv local myproject
+```
+
+The virtualenv will be automatically activated whenever you enter the projet's
+directory.
