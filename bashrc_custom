@@ -31,11 +31,12 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Go
-export GO111MODULE=on
+export GO111MODULE=auto
 export GOPATH=$HOME/go
 path_append "/usr/local/go/bin"
 path_append "$GOPATH/bin"
 alias godir='cd $HOME/go/src/github.com/team-telnyx'
+export GOPRIVATE=github.com/team-telnyx/*
 
 # Rust
 path_append "$HOME/.cargo/bin"
