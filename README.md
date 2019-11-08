@@ -40,6 +40,14 @@ ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+## Tig
+
+Add the following to `~/.tigrc`:
+
+```
+source ~/.dotfiles/tigrc
+```
+
 ## Python
 
 Install [pyenv][pyenv] and [pyenv-virtualenv][pyenv-virtualenv].
