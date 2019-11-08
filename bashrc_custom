@@ -21,7 +21,7 @@ alias dc='docker-compose'
 # Python virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/p
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
 . "$HOME"/.local/bin/virtualenvwrapper.sh
 
 # Python pyenv
