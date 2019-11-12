@@ -18,17 +18,17 @@ alias dcln='docker rmi $(docker images -qf dangling=true)'
 alias drmc='docker rm $(docker ps -a -q) && dcln'
 alias dc='docker-compose'
 
-# Python virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/p
-export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
-. "$HOME"/.local/bin/virtualenvwrapper.sh
-
 # Python pyenv
 export PYENV_ROOT=$HOME/.pyenv
 path_append "$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# Python virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/p
+export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
+. "$HOME"/.pyenv/versions/3.7.5/bin/virtualenvwrapper.sh
 
 # Go
 export GO111MODULE=auto
