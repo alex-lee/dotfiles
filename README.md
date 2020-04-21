@@ -9,16 +9,15 @@ Clone into `~/.dotfiles`.
 * The tmux config expects `xclip` to be installed.
 * Install the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
   plugin for vim and neovim.
-* To install virtualenvwrapper: `pip3 install --user virtualenvwrapper`
 
 ## Bash
 
-Add the following lines to `~/.bashrc`:
+Append the following lines to `~/.bashrc`:
 
 ```sh
 # Load custom configuration.
 if [ -f ~/.dotfiles/bashrc_custom ]; then
-    . ~/.dotfiles/bashrc_custom
+    . "$HOME/.dotfiles/bashrc_custom"
 fi
 ```
 
@@ -28,7 +27,6 @@ the following:
 * [Elixir](https://elixir-lang.org/)
 * [Node](https://nodejs.org/)
 * [Python](https://www.python.org/)
-  * [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
   * [pyenv](https://github.com/pyenv/pyenv)
 
 ## Tmux
@@ -58,10 +56,10 @@ Install [pyenv][pyenv] and [pyenv-virtualenv][pyenv-virtualenv].
 Example usage:
 
 ```bash
-~$ pyenv install 3.7.5
+~$ pyenv install 3.8.2
 ~$ mkdir ~/myproject
 ~$ cd ~/myproject
-~/myproject$ pyenv virtualenv 3.7.5 myproject
+~/myproject$ pyenv virtualenv 3.8.2 myproject
 ~/myproject$ pyenv local myproject
 ```
 

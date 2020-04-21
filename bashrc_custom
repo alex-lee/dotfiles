@@ -1,11 +1,21 @@
 #!/bin/bash
-# vim: ft=sh
+# vim: expandtab:sw=2:ts=2
 
-# Use this to avoid duplicate entries.
+# Use these to avoid duplicate path entries.
+path_prepend() {
+  if [[ ! -d "$1" ]]; then
+    return
+  elif [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
+    export PATH=$1:$PATH
+  fi
+}
+
 path_append() {
-	if [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
-		export PATH=$PATH:$1
-	fi
+  if [[ ! -d "$1" ]]; then
+    return
+  elif [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
+    export PATH=$PATH:$1
+  fi
 }
 
 set -o vi
@@ -21,37 +31,28 @@ alias dcln='docker rmi $(docker images -qf dangling=true)'
 alias drmc='docker rm $(docker ps -a -q) && dcln'
 alias dc='docker-compose'
 
-# Python pyenv
-export PYENV_ROOT=$HOME/.pyenv
-path_append "$PYENV_ROOT/bin"
+# Node
+# (Need to create the symlink to this path.)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# Python virtualenvwrapper and pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+path_prepend "$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# Python virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/p
-export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
-. "$HOME"/.pyenv/versions/3.7.5/bin/virtualenvwrapper.sh
 
 # Go
 export GO111MODULE=auto
 export GOPATH=$HOME/go
-path_append "/usr/local/go/bin"
 path_append "$GOPATH/bin"
-alias godir='cd $HOME/go/src/github.com/team-telnyx'
-export GOPRIVATE=github.com/team-telnyx/*
+path_append "/usr/local/go/bin"
 
 # Rust
 path_append "$HOME/.cargo/bin"
 
-# Elixir
-path_append "$HOME/e/elixir/bin"
-
-# Node and Yarn
-# (Need to create the symlink to this path.)
-path_append "$HOME/.yarn/bin"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
 # liquidprompt
 [[ $- = *i* ]] && . ~/extern/liquidprompt/liquidprompt
+
+# fzf: https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
