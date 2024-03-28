@@ -4,10 +4,10 @@ Clone into `~/.dotfiles`.
 
 ## Prerequisites
 
-* The bash config expects [liquidprompt](https://github.com/nojhan/liquidprompt) to be
+- The bash config expects [liquidprompt](https://github.com/nojhan/liquidprompt) to be
   installed.
-* The tmux config expects `xclip` to be installed.
-* Install the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+- The tmux config expects `xclip` to be installed.
+- Install the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
   plugin for vim and neovim.
 
 ## Bash
@@ -23,11 +23,12 @@ fi
 
 In addition to some `bash` settings, custom settings are included for
 the following:
-* [Go](https://golang.org/)
-* [Elixir](https://elixir-lang.org/)
-* [Node](https://nodejs.org/)
-* [Python](https://www.python.org/)
-  * [pyenv](https://github.com/pyenv/pyenv)
+
+- [Go](https://golang.org/)
+- [Elixir](https://elixir-lang.org/)
+- [Node](https://nodejs.org/)
+- [Python](https://www.python.org/)
+  - [pyenv](https://github.com/pyenv/pyenv)
 
 ## Tmux
 
@@ -56,12 +57,26 @@ Install [pyenv][pyenv] and [pyenv-virtualenv][pyenv-virtualenv].
 Example usage:
 
 ```bash
-~$ pyenv install 3.8.2
+~$ pyenv install 3.12.2
 ~$ mkdir ~/myproject
 ~$ cd ~/myproject
-~/myproject$ pyenv virtualenv 3.8.2 myproject
+~/myproject$ pyenv virtualenv 3.12.2 myproject
 ~/myproject$ pyenv local myproject
 ```
 
 The virtualenv will be automatically activated whenever you enter the projet's
 directory.
+
+### IPython
+
+Create the default config, if it doesn't yet exist:
+
+```bash
+$ ipython profile create
+```
+
+Set the following in `~/.ipython/profile_default/ipython_config.py`:
+
+```
+c.TerminalInteractiveShell.true_color = True
+```

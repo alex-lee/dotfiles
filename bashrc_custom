@@ -1,21 +1,22 @@
 #!/bin/bash
-# vim: expandtab:sw=2:ts=2
+# vim: noexpandtab:sw=2:ts=2
+# Custom configuration for non-login shells.
 
 # Use these to avoid duplicate path entries.
 path_prepend() {
-  if [[ ! -d "$1" ]]; then
-    return
-  elif [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
-    export PATH=$1:$PATH
-  fi
+	if [[ ! -d "$1" ]]; then
+		return
+	elif [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
+		export PATH=$1:$PATH
+	fi
 }
 
 path_append() {
-  if [[ ! -d "$1" ]]; then
-    return
-  elif [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
-    export PATH=$PATH:$1
-  fi
+	if [[ ! -d "$1" ]]; then
+		return
+	elif [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
+		export PATH=$PATH:$1
+	fi
 }
 
 set -o vi
@@ -29,30 +30,47 @@ stty -ixon
 # Docker
 alias dcln='docker rmi $(docker images -qf dangling=true)'
 alias drmc='docker rm $(docker ps -a -q) && dcln'
-alias dc='docker-compose'
+alias dc='docker compose'
+alias docker-compose='docker compose'
 
 # Node
 # (Need to create the symlink to this path.)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Python virtualenvwrapper and pyenv
+# Bun
+if [ -d "$HOME/.bun" ]; then
+	export BUN_INSTALL="$HOME/.bun"
+	path_prepend "$BUN_INSTALL/bin"
+fi
+
+# Python
 export PYENV_ROOT="$HOME/.pyenv"
 path_prepend "$PYENV_ROOT/bin"
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Go
-export GO111MODULE=auto
-export GOPATH=$HOME/go
-path_append "$GOPATH/bin"
+path_append "$HOME/go/bin"
 path_append "/usr/local/go/bin"
 
+# TeX Live
+path_append "/usr/local/texlive/2022/bin/x86_64-linux"
+
 # Rust
-path_append "$HOME/.cargo/bin"
+if [ -s "$HOME/.cargo/env" ]; then
+	# shellcheck source-path=SCRIPTDIR/..
+	. "$HOME/.cargo/env"
+fi
 
 # liquidprompt
-[[ $- = *i* ]] && . ~/extern/liquidprompt/liquidprompt
+# shellcheck source-path=SCRIPTDIR/..
+[[ $- = *i* ]] && . "$HOME/extern/liquidprompt/liquidprompt"
 
 # fzf: https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# shellcheck source-path=SCRIPTDIR/..
+[ -f ~/.fzf.bash ] && source "$HOME/.fzf.bash"
+
+# direnv
+eval "$(direnv hook bash)"
