@@ -36,7 +36,7 @@ alias docker-compose='docker compose'
 # Node
 # (Need to create the symlink to this path.)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 # Bun
 if [ -d "$HOME/.bun" ]; then
@@ -55,18 +55,21 @@ eval "$(pyenv virtualenv-init -)"
 path_append "$HOME/go/bin"
 path_append "/usr/local/go/bin"
 
+# Zig
+path_append "/usr/local/zig"
+
 # TeX Live
 path_append "/usr/local/texlive/2022/bin/x86_64-linux"
 
 # Rust
 if [ -s "$HOME/.cargo/env" ]; then
 	# shellcheck source-path=SCRIPTDIR/..
-	. "$HOME/.cargo/env"
+	source "$HOME/.cargo/env"
 fi
 
 # liquidprompt
 # shellcheck source-path=SCRIPTDIR/..
-[[ $- = *i* ]] && . "$HOME/extern/liquidprompt/liquidprompt"
+[[ $- = *i* ]] && source "$HOME/extern/liquidprompt/liquidprompt"
 
 # fzf: https://github.com/junegunn/fzf
 # shellcheck source-path=SCRIPTDIR/..
