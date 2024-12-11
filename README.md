@@ -4,33 +4,36 @@ Clone into `~/.dotfiles`.
 
 ## Prerequisites
 
+- Install [mise](https://mise.jdx.dev/).
 - The bash config expects [liquidprompt](https://github.com/nojhan/liquidprompt) to be
   installed.
-- The tmux config expects `xclip` to be installed.
-- Install the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
-  plugin for vim and neovim.
+- If using tmux:
+  - The tmux config expects `xclip` to be installed.
+  - Install the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+    plugin for vim and neovim.
 
-## Bash
+## Initial setup
 
 Append the following lines to `~/.bashrc`:
 
 ```sh
 # Load custom configuration.
 if [ -f ~/.dotfiles/bashrc_custom ]; then
-    . "$HOME/.dotfiles/bashrc_custom"
+  . "$HOME/.dotfiles/bashrc_custom"
 fi
 ```
 
-In addition to some `bash` settings, custom settings are included for
-the following:
+Open a new terminal and run `mise doctor` to make sure `mise` is set up correctly.
 
-- [Go](https://golang.org/)
-- [Elixir](https://elixir-lang.org/)
-- [Node](https://nodejs.org/)
-- [Python](https://www.python.org/)
-  - [pyenv](https://github.com/pyenv/pyenv)
+Install dev tools:
 
-## Tmux
+```sh
+mise use -g go@1.23
+mise use -g node@22
+mise use -g python@3.12
+```
+
+## Tmux (optional)
 
 Create symlink for the config file and install the plugin manager.
 
@@ -49,23 +52,18 @@ source ~/.dotfiles/tigrc
 
 ## Python
 
-Install [pyenv][pyenv] and [pyenv-virtualenv][pyenv-virtualenv].
+Example project `mise.toml`:
 
-[pyenv]: https://github.com/pyenv/pyenv
-[pyenv-virtualenv]: https://github.com/pyenv/pyenv-virtualenv
+```toml
+[tools]
+python = "3.12"
 
-Example usage:
+[env]
+_.python.venv = { path = ".venv", create = true }
 
-```bash
-~$ pyenv install 3.12.2
-~$ mkdir ~/myproject
-~$ cd ~/myproject
-~/myproject$ pyenv virtualenv 3.12.2 myproject
-~/myproject$ pyenv local myproject
+ENV = "dev"
+DATABASE_URL = "..."
 ```
-
-The virtualenv will be automatically activated whenever you enter the projet's
-directory.
 
 ### IPython
 
