@@ -1,5 +1,4 @@
 #!/bin/bash
-# vim: noexpandtab:sw=2:ts=2
 # Custom configuration for non-login shells.
 
 # Use these to avoid duplicate path entries.
