@@ -1,0 +1,44 @@
+# If not running interactively, don't do anything (leave this at the top of this file)
+[[ $- != *i* ]] && return
+
+# All the default Omarchy aliases and functions
+# (don't mess with these directly, just overwrite them here!)
+# source ~/.local/share/omarchy/default/bash/rc
+
+# Add your own exports, aliases, and functions here.
+#
+# Make an alias for invoking commands you use constantly
+# alias p='python'
+
+source ~/.local/share/omarchy/default/bash/shell
+
+# From ~/.local/share/omarchy/default/bash/init
+# Don't use starship.
+
+if command -v mise &>/dev/null; then
+        eval "$(mise activate bash)"
+fi
+
+if command -v zoxide &>/dev/null; then
+        eval "$(zoxide init bash)"
+fi
+
+if command -v fzf &>/dev/null; then
+        if [[ -f /usr/share/fzf/completion.bash ]]; then
+                source /usr/share/fzf/completion.bash
+        fi
+        if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
+                source /usr/share/fzf/key-bindings.bash
+        fi
+fi
+
+source ~/.local/share/omarchy/default/bash/envs
+
+[[ $- == *i* ]] && bind -f ~/.local/share/omarchy/default/bash/inputrc
+
+[[ $- == *i* ]] && source "$HOME/extern/liquidprompt/liquidprompt"
+
+alias ls='ls --color=auto'
+
+set -o vi
+
