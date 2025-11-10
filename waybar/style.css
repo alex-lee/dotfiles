@@ -8,7 +8,7 @@
   border-radius: 0;
   min-height: 0;
   font-family: 'GoMono Nerd Font';
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .modules-left {
@@ -65,8 +65,8 @@ tooltip {
 }
 
 #clock {
-  margin-left: 8.75px;
-  margin-right: 8.75px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .hidden {
