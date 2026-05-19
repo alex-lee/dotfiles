@@ -143,7 +143,7 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt e" { EditScrollback; SwitchToMode "locked"; }
-        bind "Alt f" { ToggleFloatingPanes; }
+        bind "Ctrl Alt f" { ToggleFloatingPanes; }
         // bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt i" { MoveTab "left"; }
         // bind "Alt j" { MoveFocus "down"; }
@@ -151,8 +151,8 @@ keybinds clear-defaults=true {
         // bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
-        bind "Ctrl Alt h" { GoToPreviousTab; }
-        bind "Ctrl Alt l" { GoToNextTab; }
+        bind "Alt h" { GoToPreviousTab; }
+        bind "Alt l" { GoToNextTab; }
         // vim-zellij-navigator
         bind "Ctrl h" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
