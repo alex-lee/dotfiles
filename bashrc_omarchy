@@ -38,6 +38,13 @@ source ~/.local/share/omarchy/default/bash/envs
 
 [[ $- == *i* ]] && source "$HOME/extern/liquidprompt/liquidprompt"
 
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Disable XON/XOFF flow control.
+stty -ixon
+
 alias ls='ls --color=auto'
 
 set -o vi
